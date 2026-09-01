@@ -18,6 +18,7 @@
     --result-line: #cfdcf0;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
@@ -34,7 +35,7 @@
     box-shadow: 0 12px 34px rgba(30,37,48,0.08);
     margin-bottom: 24px;
   }
-  h1 { font-size: 1.9rem; margin-bottom: 10px; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(1.5rem, 5.5vw, 1.9rem); margin-bottom: 10px; letter-spacing: -0.01em; }
   .intro p { line-height: 1.6; color: var(--muted); }
 
   .card {
@@ -165,6 +166,39 @@
   }
   button.secondary:hover { background: #e1eaf8; }
   button.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    body { padding: 16px 10px 60px; }
+    .intro { padding: 22px 18px; border-radius: 16px; }
+    .card { padding: 22px 18px 26px; border-radius: 16px; }
+    h1 { font-size: 1.4rem; }
+    .intro p { font-size: 0.92rem; }
+
+    .tabs {
+      flex-wrap: wrap;
+      gap: 6px;
+      border-radius: 16px;
+    }
+    .tab {
+      flex: 1 1 calc(50% - 6px);
+      font-size: 0.85rem;
+      padding: 12px 8px;
+      border-radius: 12px;
+    }
+
+    .panel h2 { font-size: 1.1rem; }
+    input[type="text"], input[type="number"], input[type="date"], input[type="email"], select {
+      font-size: 16px; /* prevents iOS auto-zoom on focus */
+      padding: 12px 12px;
+    }
+
+    .summary { padding: 16px 16px; }
+    .summary .headline dd { font-size: 1.25rem; }
+
+    .action-row { flex-direction: column; }
+    button.btn { width: 100%; text-align: center; }
+  }
 
   /* Print styles */
   @media print {
